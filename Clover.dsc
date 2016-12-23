@@ -328,7 +328,7 @@
   Clover/FileSystems/VBoxFsDxe/VBoxReiserFS.inf
   #EmbeddedPkg/Universal/MmcDxe/MmcDxe.inf
   #Clover/OsxMmcDxe/MmcDxe.inf
-  Clover/FileSystems/FatPkg/EnhancedFatDxe/Fat.inf
+  FatPkg/EnhancedFatDxe/Fat.inf
   # FS from grub
 !ifndef NO_GRUB_DRIVERS
   Clover/FileSystems/GrubFS/src/EXFAT.inf
