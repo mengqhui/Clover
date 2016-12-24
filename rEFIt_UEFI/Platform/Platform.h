@@ -889,7 +889,7 @@ typedef struct {
   CHAR8                   Language[16];
   CHAR8                   BootArgs[256];
   CHAR16                  CustomUuid[40];
-  
+
   CHAR16                  *DefaultVolume;
 #if defined(MDE_CPU_IA32)
   UINT32                  align10;
@@ -904,7 +904,7 @@ typedef struct {
   UINT8                   Pad21[2];
 //Monitor
   UINT16                  VendorEDID;
-  UINT16                  ProductEDID;  
+  UINT16                  ProductEDID;
   UINT16                  BacklightLevel;
   BOOLEAN                 BacklightLevelConfig;
   BOOLEAN                 IntelBacklight;
@@ -1215,9 +1215,9 @@ typedef struct {
   CHAR16                  **DisabledAML;
   CHAR8                   **PatchDsdtLabel; //yyyy
   INPUT_ITEM              *PatchDsdtMenuItem;
-  
-  
-  // boot.efi 
+
+
+  // boot.efi
   UINT32 OptionsBits;
   UINT32 FlagsBits;
   UINT32 UIScale;
