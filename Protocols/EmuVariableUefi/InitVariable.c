@@ -29,7 +29,7 @@ EFI_RUNTIME_SERVICES gOrgRT;
 EFI_RUNTIME_SERVICES *gRT;
 
 /** Apple Boot Guid - cars with this GUID are visible in OSX with nvram */
-extern EFI_GUID gEfiAppleBootGuid;
+extern EFI_GUID gAppleBootVariableGuid;
 
 
 
@@ -455,7 +455,7 @@ EmuVariableControlProtocolInstallEmulation (
   // that this driver is used.
   //
   Status = gRT->SetVariable (L"EmuVariableUefiPresent",
-                             &gEfiAppleBootGuid,
+                             &gAppleBootVariableGuid,
                              EFI_VARIABLE_BOOTSERVICE_ACCESS | EFI_VARIABLE_RUNTIME_ACCESS,
                              3,
                              "Yes"

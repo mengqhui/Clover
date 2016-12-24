@@ -521,7 +521,7 @@ BootVolumeMediaDevicePathNodesEqual (
 }
 
 
-/** Reads gEfiAppleBootGuid:efi-boot-device-data and BootCampHD NVRAM variables and parses them
+/** Reads gAppleBootVariableGuid:efi-boot-device-data and BootCampHD NVRAM variables and parses them
  *  into gEfiBootVolume, gEfiBootLoaderPath and gEfiBootDeviceGuid.
  *  Vars after this call:
  *   gEfiBootDeviceData - original efi-boot-device-data
@@ -546,7 +546,7 @@ GetEfiBootDeviceFromNvram ()
     return EFI_SUCCESS;
   }
 
-  gEfiBootDeviceData = GetNvramVariable (L"efi-boot-next-data", &gEfiAppleBootGuid, NULL, &Size);
+  gEfiBootDeviceData = GetNvramVariable (L"efi-boot-next-data", &gAppleBootVariableGuid, NULL, &Size);
   if (gEfiBootDeviceData != NULL) {
 //    DBG("Got efi-boot-next-data size=%d\n", Size);
     if (IsDevicePathValid(gEfiBootDeviceData, Size)) {
@@ -561,11 +561,11 @@ GetEfiBootDeviceFromNvram ()
     VOID *Value;
     UINTN Size2=0;
     EFI_STATUS Status;
-    Status = GetVariable2 (L"aptiofixflag", &gEfiAppleBootGuid, &Value, &Size2);
+    Status = GetVariable2 (L"aptiofixflag", &gAppleBootVariableGuid, &Value, &Size2);
     if (EFI_ERROR(Status)) {
-      gEfiBootDeviceData = GetNvramVariable (L"efi-boot-device-data", &gEfiAppleBootGuid, NULL, &Size);
+      gEfiBootDeviceData = GetNvramVariable (L"efi-boot-device-data", &gAppleBootVariableGuid, NULL, &Size);
     } else {
-      gEfiBootDeviceData = GetNvramVariable (L"specialbootdevice", &gEfiAppleBootGuid, NULL, &Size);
+      gEfiBootDeviceData = GetNvramVariable (L"specialbootdevice", &gAppleBootVariableGuid, NULL, &Size);
     }
     
     if (gEfiBootDeviceData != NULL) {
@@ -592,7 +592,7 @@ GetEfiBootDeviceFromNvram ()
   // then Startup Disk sets BootCampHD to Win disk dev path.
   //
   if (DevicePathType(gEfiBootDeviceData) == HARDWARE_DEVICE_PATH && DevicePathSubType (gEfiBootDeviceData) == HW_MEMMAP_DP) {
-    gBootCampHD = GetNvramVariable (L"BootCampHD", &gEfiAppleBootGuid, NULL, &Size);
+    gBootCampHD = GetNvramVariable (L"BootCampHD", &gAppleBootVariableGuid, NULL, &Size);
     gEfiBootVolume = gBootCampHD;
 
     if (gBootCampHD == NULL) {
@@ -915,7 +915,7 @@ PutNvramPlistToRtVars ()
 
 
 /** Performs detailed search for Startup Disk or last Clover boot volume
- *  by looking for gEfiAppleBootGuid:efi-boot-device-data and BootCampHD RT vars.
+ *  by looking for gAppleBootVariableGuid:efi-boot-device-data and BootCampHD RT vars.
  *  Returns MainMenu entry index or -1 if not found.
  */
 INTN
@@ -1187,7 +1187,7 @@ EFI_STATUS SetStartupDiskVolume (
   //
   // set efi-boot-device-data to volume dev path
   //
-  Status = SetNvramVariable (L"efi-boot-device-data", &gEfiAppleBootGuid, Attributes, GetDevicePathSize(DevPath), DevPath);
+  Status = SetNvramVariable (L"efi-boot-device-data", &gAppleBootVariableGuid, Attributes, GetDevicePathSize(DevPath), DevPath);
 
   if (EFI_ERROR(Status)) {
     return Status;
@@ -1214,7 +1214,7 @@ EFI_STATUS SetStartupDiskVolume (
     Size          = AsciiStrLen (EfiBootDevice);
     DBG ("  * efi-boot-device: %a\n", EfiBootDevice);
     
-    Status        = SetNvramVariable (L"efi-boot-device", &gEfiAppleBootGuid, Attributes, Size, EfiBootDevice);
+    Status        = SetNvramVariable (L"efi-boot-device", &gAppleBootVariableGuid, Attributes, Size, EfiBootDevice);
 
     FreePool (EfiBootDevice);
   }
@@ -1231,13 +1231,13 @@ RemoveStartupDiskVolume ()
     
 //    DBG ("RemoveStartupDiskVolume:\n");
     
-    /*Status =*/ DeleteNvramVariable (L"efi-boot-device", &gEfiAppleBootGuid);
+    /*Status =*/ DeleteNvramVariable (L"efi-boot-device", &gAppleBootVariableGuid);
 //    DBG ("  * efi-boot-device = %r\n", Status);
     
-    /*Status =*/ DeleteNvramVariable (L"efi-boot-device-data", &gEfiAppleBootGuid);
+    /*Status =*/ DeleteNvramVariable (L"efi-boot-device-data", &gAppleBootVariableGuid);
 //    DBG ("  * efi-boot-device-data = %r\n", Status);
     
-    /*Status =*/ DeleteNvramVariable (L"BootCampHD", &gEfiAppleBootGuid);
+    /*Status =*/ DeleteNvramVariable (L"BootCampHD", &gAppleBootVariableGuid);
 //    DBG ("  * BootCampHD = %r\n", Status);
 //    DBG ("Removed efi-boot-device-data variable: %r\n", Status);
 }
