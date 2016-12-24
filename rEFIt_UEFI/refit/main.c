@@ -2059,6 +2059,7 @@ RefitMain (IN EFI_HANDLE           ImageHandle,
   //DBG("ScanSPD() end\n");
 
   SetPrivateVarProto();
+  InstallAppleProtocols ();
 //  GetDefaultSettings();
   GetAcpiTablesList();
   DBG("Calibrated TSC frequency =%ld =%ldMHz\n", gCPUStructure.TSCCalibr, DivU64x32(gCPUStructure.TSCCalibr, Mega));
