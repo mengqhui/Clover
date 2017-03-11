@@ -1617,7 +1617,7 @@ EFI_STATUS PatchACPI(IN REFIT_VOLUME *Volume, CHAR8 *OSVersion)
     newFadt->Header.Revision = EFI_ACPI_4_0_FIXED_ACPI_DESCRIPTION_TABLE_REVISION;
     newFadt->Reserved0 = 0; //ACPIspec said it should be 0, while 1 is possible, but no more
 
-    if ((gSettings.smartUPS || (AsciiStrnCmp (gSettings.ProductName, "MacPro", 6) == 0)) {
+    if (gSettings.smartUPS || (AsciiStrnCmp (gSettings.ProductName, "MacPro", 6) == 0)) {
       newFadt->PreferredPmProfile = 3;
     } else {
       newFadt->PreferredPmProfile = gMobile?2:1; //as calculated before
