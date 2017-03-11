@@ -13,6 +13,7 @@ install:
  - cd $TRAVIS_BUILD_DIR/../
  - git clone https://github.com/tianocore/edk2
  - cd edk2
+ - yes | cp -R $TRAVIS_BUILD_DIR/Patches_for_EDK2/* .
  - make -C BaseTools -s
  - source edksetup.sh
  - cd $TRAVIS_BUILD_DIR
