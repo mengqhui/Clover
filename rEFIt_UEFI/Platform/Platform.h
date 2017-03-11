@@ -1637,7 +1637,6 @@ extern CHAR8                          *BootOSName;
 extern EFI_GUID                        gEfiAppleBootGuid;
 extern EFI_GUID                        gEfiAppleNvramGuid;
 extern EFI_GUID                        AppleSystemInfoProducerName;
-extern EFI_GUID                        AppleDevicePropertyProtocolGuid;
 extern EFI_GUID                        gAppleScreenInfoProtocolGuid;
 extern EFI_GUID                        gEfiAppleVendorGuid;
 extern EFI_GUID                        gEfiPartTypeSystemPartGuid;
