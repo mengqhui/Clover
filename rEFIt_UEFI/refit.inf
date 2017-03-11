@@ -226,9 +226,9 @@
   gEfiSimpleTextInProtocolGuid                            # ALWAYS_CONSUMED
   gEfiSimpleTextInputExProtocolGuid                       # ALWAYS_CONSUMED
   gEfiSimpleTextOutProtocolGuid                           # ALWAYS_CONSUMED
-  gEfiUnicodeCollationProtocolGuid                       # ALWAYS_CONSUMED  
-  gEfiUnicodeCollation2ProtocolGuid                       # ALWAYS_CONSUMED  
-  
+  gEfiUnicodeCollationProtocolGuid                       # ALWAYS_CONSUMED
+  gEfiUnicodeCollation2ProtocolGuid                       # ALWAYS_CONSUMED
+
   gEfiAcpiS3SaveProtocolGuid                    # PROTOCOL CONSUMES
   gEfiBlockIoProtocolGuid                       # PROTOCOL CONSUMES
   gEfiCpuArchProtocolGuid                       # PROTOCOL CONSUMES
@@ -242,14 +242,14 @@
   gEfiLegacy8259ProtocolGuid					## PROTOCOL SOMETIMES_CONSUMES
   gEfiLoadedImageProtocolGuid                   # PROTOCOL CONSUMES
   gEfiOEMBadgingProtocolGuid                    # PROTOCOL CONSUMES
-  gEfiPciIoProtocolGuid                         # PROTOCOL CONSUMES 
+  gEfiPciIoProtocolGuid                         # PROTOCOL CONSUMES
   gEfiScsiIoProtocolGuid                        ## PROTOCOL SOMETIMES_CONSUMES
   gEfiScsiPassThruProtocolGuid                  ## PROTOCOL SOMETIMES_CONSUMES
   gEfiSimpleNetworkProtocolGuid                 # PROTOCOL CONSUMES
   gEfiStatusCodeRuntimeProtocolGuid				# PROTOCOL CONSUMES
   gEfiUgaDrawProtocolGuid |PcdUgaConsumeSupport # PROTOCOL SOMETIMES_CONSUMES
   gEfiManagedNetworkServiceBindingProtocolGuid
-  
+
   gEfiAbsolutePointerProtocolGuid
   gEfiAcpiTableProtocolGuid
   gEfiEdidActiveProtocolGuid
@@ -270,7 +270,7 @@
   gEfiTimerArchProtocolGuid
   gAppleEventProtocolGuid
   gEfiKeyboardInfoProtocolGuid
-  
+
   gMsgLogProtocolGuid
   gEfiPlatformDriverOverrideProtocolGuid
   gEmuVariableControlProtocolGuid

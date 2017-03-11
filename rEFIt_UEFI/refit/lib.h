@@ -192,9 +192,9 @@ OSTYPE_COMPARE_IMP(OSTYPE_IS_LINUX, type1, type2) || OSTYPE_COMPARE_IMP(OSTYPE_I
 #define OPT_NVDISABLE       (1 << 5)
 #define OPT_SLIDE           (1 << 6)
 #define OPT_POWERNAPOFF     (1 << 7)
-#define OPT_XCPM            (1 << 8) 
-#define OPT_GNOIDLE         (1 << 9) 
-#define OPT_GNOSLEEP        (1 << 10) 
+#define OPT_XCPM            (1 << 8)
+#define OPT_GNOIDLE         (1 << 9)
+#define OPT_GNOSLEEP        (1 << 10)
 #define OPT_GNOMSI          (1 << 11)
 #define OPT_EHCUSB          (1 << 12)
 #define OPT_KEEPSYMS        (1 << 13)
@@ -247,7 +247,7 @@ typedef enum {
   AlignCenter,
   AlignUp,
   AlignDown
-  
+
 } ALIGNMENT;
 
 //mouse types
@@ -270,10 +270,10 @@ typedef struct _pointers {
   EG_IMAGE *Pointer;
   EG_IMAGE *newImage;
   EG_IMAGE *oldImage;
-  
+
   EG_RECT  newPlace;
   EG_RECT  oldPlace;
-  
+
   UINT64	LastClickTime;  //not EFI_TIME
   EFI_SIMPLE_POINTER_STATE    State;
   MOUSE_EVENT MouseEvent;
@@ -288,7 +288,7 @@ typedef enum {
   UNIString,
   RadioSwitch,
   CheckBit,
-  
+
 } ITEM_TYPE;
 
 typedef struct {
@@ -460,7 +460,7 @@ typedef enum {
   Scale,
   Crop,
   Tile
-  
+
 } SCALING;
 
 typedef struct {
@@ -559,7 +559,7 @@ typedef struct KERNEL_AND_KEXT_PATCHES
   BOOLEAN KPHaswellE;
   BOOLEAN KPAsusAICPUPM;
   BOOLEAN KPAppleRTC;
-  BOOLEAN KPKernelPm; 
+  BOOLEAN KPKernelPm;
   BOOLEAN KPDELLSMBIOS;  // Dell SMBIOS patch
 //  UINT8   pad[1];
   UINT32  FakeCPUID;
@@ -568,12 +568,12 @@ typedef struct KERNEL_AND_KEXT_PATCHES
 #if defined(MDE_CPU_IA32)
   UINT32  align1;
 #endif
-  
+
   UINT8   *KPATIConnectorsData;
 #if defined(MDE_CPU_IA32)
   UINT32  align2;
 #endif
-  
+
   UINTN   KPATIConnectorsDataLen;
 #if defined(MDE_CPU_IA32)
   UINT32  align3;
@@ -582,14 +582,14 @@ typedef struct KERNEL_AND_KEXT_PATCHES
 #if defined(MDE_CPU_IA32)
   UINT32  align4;
 #endif
-  
+
   INT32   NrKexts;
   UINT32  align40;
   KEXT_PATCH *KextPatches;   //zzzz
 #if defined(MDE_CPU_IA32)
   UINT32  align5;
 #endif
-  
+
   INT32    NrForceKexts;
   UINT32  align50;
   CHAR16 **ForceKexts;
@@ -600,7 +600,7 @@ typedef struct KERNEL_AND_KEXT_PATCHES
   KERNEL_PATCH *KernelPatches;
   INT32   NrBoots;
   KERNEL_PATCH *BootPatches;
-  
+
 } KERNEL_AND_KEXT_PATCHES;
 
 typedef struct {
@@ -991,5 +991,5 @@ VOID DbgHeader(CHAR8 *str);
 
 #endif
 /*
- 
+
  EOF */

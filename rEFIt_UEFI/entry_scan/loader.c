@@ -758,7 +758,7 @@ STATIC VOID AddDefaultMenu(IN LOADER_ENTRY *Entry)
       AddMenuEntry(SubScreen, (REFIT_MENU_ENTRY *)SubEntry);
     }
 
-    
+
 //    AddMenuCheck(SubScreen, "Without caches",       OSFLAG_NOCACHES, 69);
 //    AddMenuCheck(SubScreen, "With injected kexts",  OSFLAG_WITHKEXTS, 69);
     AddMenuInfo(SubScreen, L"=== boot-args ===");
@@ -787,7 +787,7 @@ STATIC VOID AddDefaultMenu(IN LOADER_ENTRY *Entry)
     if (gSettings.CsrActiveConfig == 0) {
       AddMenuCheck(SubScreen, "No SIP", OSFLAG_NOSIP, 69);
     }
-    
+
 #else
 #if defined(MDE_CPU_X64)
     if (!KernelIs64BitOnly) {
@@ -975,7 +975,7 @@ STATIC VOID AddDefaultMenu(IN LOADER_ENTRY *Entry)
   } else if (Entry->LoaderType == OSTYPE_LINEFI) {
     BOOLEAN Quiet = (StrStr(Entry->LoadOptions, L"quiet") != NULL);
     BOOLEAN WithSplash = (StrStr(Entry->LoadOptions, L"splash") != NULL);
-    
+
     // default entry
     SubEntry = DuplicateLoaderEntry(Entry);
     if (SubEntry) {
@@ -1036,7 +1036,7 @@ STATIC VOID AddDefaultMenu(IN LOADER_ENTRY *Entry)
   } else if ((Entry->LoaderType == OSTYPE_WIN) || (Entry->LoaderType == OSTYPE_WINEFI)) {
     // by default, skip the built-in selection and boot from hard disk only
     Entry->LoadOptions = PoolPrint(L"-s -h");
-    
+
     // default entry
     SubEntry = DuplicateLoaderEntry(Entry);
     if (SubEntry) {
@@ -2009,7 +2009,7 @@ VOID AddCustomEntries(VOID)
 {
   CUSTOM_LOADER_ENTRY *Custom;
   UINTN                i = 0;
-  
+
   if (!gSettings.CustomEntries) {
     return;
   }

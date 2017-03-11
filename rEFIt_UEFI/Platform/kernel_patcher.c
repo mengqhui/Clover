@@ -1308,7 +1308,7 @@ BooterPatch(IN UINT8 *BooterData, IN UINT64 BooterSize, LOADER_ENTRY *Entry)
       DBG_RT(Entry, "==> disabled\n");
       continue;
     }
-    
+
     Num = SearchAndReplace(
                            BooterData,
                            BooterSize,
@@ -1317,14 +1317,14 @@ BooterPatch(IN UINT8 *BooterData, IN UINT64 BooterSize, LOADER_ENTRY *Entry)
                            Entry->KernelAndKextPatches->BootPatches[i].Patch,
                            Entry->KernelAndKextPatches->BootPatches[i].Count
                            );
-    
+
     if (Num) {
       y++;
     }
-    
+
     DBG_RT(Entry, "==> %a : %d replaces done\n", Num ? "Success" : "Error", Num);
   }
-  
+
   return (y != 0);
 }
 
@@ -1523,7 +1523,7 @@ KernelAndKextsPatcherStart(IN LOADER_ENTRY *Entry)
         OSFLAG_ISUNSET(Entry->Flags, OSFLAG_WITHKEXTS)) {
     // disabled kext injection if FakeSMC is already present
  //   Entry->Flags = OSFLAG_UNSET(Entry->Flags, OSFLAG_WITHKEXTS); //Slice - we are already here
-    
+
       DBG_RT(Entry, "\nInjectKexts: disabled because FakeSMC is already present and InjectKexts option set to Detect\n");
       gBS->Stall(500000);
     }

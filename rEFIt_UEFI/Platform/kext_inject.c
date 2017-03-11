@@ -29,7 +29,7 @@ EFI_STATUS EFIAPI ThinFatFile(IN OUT UINT8 **binary, IN OUT UINTN *length, IN cp
 	cpu_type_t fapcputype;
 	UINT32 fapoffset;
 	UINT32 fapsize;
-  
+
   swapped = 0;
 	if (fhp->magic == FAT_MAGIC) {
 		nfat = fhp->nfat_arch;
@@ -51,7 +51,7 @@ EFI_STATUS EFIAPI ThinFatFile(IN OUT UINT8 **binary, IN OUT UINTN *length, IN cp
     MsgLog("Thinning fails\n");
     return EFI_NOT_FOUND;
   }
-  
+
 	for (; nfat > 0; nfat--, fap++) {
 		if (swapped) {
 			fapcputype = SwapBytes32(fap->cputype);
@@ -69,7 +69,7 @@ EFI_STATUS EFIAPI ThinFatFile(IN OUT UINT8 **binary, IN OUT UINTN *length, IN cp
 		}
 	}
 	if (length != 0) *length = size;
-  
+
 	return EFI_SUCCESS;
 }
 
@@ -92,7 +92,7 @@ EFI_STATUS EFIAPI LoadKext(IN LOADER_ENTRY *Entry, IN EFI_FILE *RootDir, IN CHAR
 	TagPtr      prop = NULL;
   BOOLEAN     NoContents = FALSE;
   _BooterKextFileInfo *infoAddr = NULL;
-  
+
 	UnicodeSPrint(TempName, 512, L"%s\\%s", FileName, L"Contents\\Info.plist");
 	Status = egLoadFile(RootDir, TempName, &infoDictBuffer, &infoDictBufferLength);
 	if (EFI_ERROR(Status)) {
@@ -135,7 +135,7 @@ EFI_STATUS EFIAPI LoadKext(IN LOADER_ENTRY *Entry, IN EFI_FILE *RootDir, IN CHAR
   bundlePathBufferLength = StrLen(FileName) + 1;
   bundlePathBuffer = AllocateZeroPool(bundlePathBufferLength);
   UnicodeStrToAsciiStrS(FileName, bundlePathBuffer, bundlePathBufferLength);
-  
+
   kext->length = (UINT32)(sizeof(_BooterKextFileInfo) + infoDictBufferLength + executableBufferLength + bundlePathBufferLength);
   infoAddr = (_BooterKextFileInfo *)AllocatePool(kext->length);
   infoAddr->infoDictPhysAddr = sizeof(_BooterKextFileInfo);
@@ -151,7 +151,7 @@ EFI_STATUS EFIAPI LoadKext(IN LOADER_ENTRY *Entry, IN EFI_FILE *RootDir, IN CHAR
   FreePool(infoDictBuffer);
   FreePool(executableFatBuffer);
   FreePool(bundlePathBuffer);
-	
+
   return EFI_SUCCESS;
 }
 
@@ -159,7 +159,7 @@ EFI_STATUS EFIAPI AddKext(IN LOADER_ENTRY *Entry, IN EFI_FILE *RootDir, IN CHAR1
 {
 	EFI_STATUS	Status;
 	KEXT_ENTRY	*KextEntry;
-  
+
 	KextEntry = AllocatePool (sizeof(KEXT_ENTRY));
 	KextEntry->Signature = KEXT_SIGNATURE;
 	Status = LoadKext(Entry, RootDir, FileName, archCpuType, &KextEntry->kext);
@@ -168,7 +168,7 @@ EFI_STATUS EFIAPI AddKext(IN LOADER_ENTRY *Entry, IN EFI_FILE *RootDir, IN CHAR1
 	} else {
 		InsertTailList (&gKextList, &KextEntry->Link);
 	}
-  
+
 	return Status;
 }
 
@@ -176,12 +176,12 @@ UINT32 GetListCount(LIST_ENTRY const* List)
 {
 	LIST_ENTRY		*Link;
 	UINT32			Count=0;
-  
+
 	if(!IsListEmpty(List)) {
 		for (Link = List->ForwardLink; Link != List; Link = Link->ForwardLink)
 			Count++;
 	}
-  
+
 	return Count;
 }
 
@@ -195,7 +195,7 @@ UINT32 GetKextsSize()
 	LIST_ENTRY		*Link;
 	KEXT_ENTRY		*KextEntry;
 	UINT32			kextsSize=0;
-  
+
 	if(!IsListEmpty(&gKextList)) {
 		for (Link = gKextList.ForwardLink; Link != &gKextList; Link = Link->ForwardLink) {
 			KextEntry = CR(Link, KEXT_ENTRY, Link, KEXT_SIGNATURE);
@@ -247,16 +247,16 @@ EFI_STATUS LoadKexts(IN LOADER_ENTRY *Entry)
 	VOID					*mm_extra;
 	UINTN					extra_size;
 	VOID					*extra;
-  
+
 	if ((Entry == 0) || OSFLAG_ISUNSET(Entry->Flags, OSFLAG_WITHKEXTS)) {
 		return EFI_NOT_STARTED;
 	}
-  
+
 	// Make Arch point to the last appearance of "arch=" in LoadOptions (which is what boot.efi will use).
 	if (Entry->LoadOptions != NULL) {
 		for (Ptr = StrStr(Entry->LoadOptions, L"arch="); Ptr!=NULL; Arch=Ptr+StrLen(L"arch="), Ptr=StrStr(Arch, L"arch="));
 	}
-  
+
 	if (Arch != NULL && StrnCmp(Arch,L"x86_64",StrLen(L"x86_64")) == 0) {
 		archCpuType = CPU_TYPE_X86_64;
 	} else if (Arch != NULL && StrnCmp(Arch,L"i386",StrLen(L"i386")) == 0) {
@@ -311,11 +311,11 @@ EFI_STATUS LoadKexts(IN LOADER_ENTRY *Entry)
 		while (DirIterNext(&KextIter, 1, L"*.kext", &KextFile)) {
 			if (KextFile->FileName[0] == '.' || StrStr(KextFile->FileName, L".kext") == NULL)
 				continue;   // skip this
-			
+
 			UnicodeSPrint(FileName, 512, L"%s\\%s", SrcDir, KextFile->FileName);
 			MsgLog("  Extra kext: %s\n", FileName);
 			AddKext(Entry, SelfVolume->RootDir, FileName, archCpuType);
-      
+
 			UnicodeSPrint(PlugIns, 512, L"%s\\%s", FileName, L"Contents\\PlugIns");
          LoadPlugInKexts(Entry, SelfVolume->RootDir, PlugIns, archCpuType, FALSE);
 		}
@@ -330,11 +330,11 @@ EFI_STATUS LoadKexts(IN LOADER_ENTRY *Entry)
 		while (DirIterNext(&KextIter, 1, L"*.kext", &KextFile)) {
 			if (KextFile->FileName[0] == '.' || StrStr(KextFile->FileName, L".kext") == NULL)
 				continue;   // skip this
-			
+
 			UnicodeSPrint(FileName, 512, L"%s\\%s", SrcDir, KextFile->FileName);
 			MsgLog("  Extra kext: %s\n", FileName);
 			AddKext(Entry, SelfVolume->RootDir, FileName, archCpuType);
-      
+
 			UnicodeSPrint(PlugIns, 512, L"%s\\%s", FileName, L"Contents\\PlugIns");
          LoadPlugInKexts(Entry, SelfVolume->RootDir, PlugIns, archCpuType, FALSE);
 		}
@@ -354,7 +354,7 @@ EFI_STATUS LoadKexts(IN LOADER_ENTRY *Entry)
 		// MsgLog("extra_size: %d		 \n", extra_size);
 		// MsgLog("offset: %d			 \n", extra_size - sizeof(DeviceTreeNodeProperty) + EFI_PAGE_SIZE);
 	}
-  
+
 	return EFI_SUCCESS;
 }
 
@@ -366,29 +366,29 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 {
 	UINT8					*dtEntry = (UINT8*)(UINTN) deviceTreeP;
 	UINTN					dtLength = (UINTN) *deviceTreeLength;
-  
+
 	DTEntry					platformEntry;
 	DTEntry					memmapEntry;
 	CHAR8 					*ptr;
 	struct OpaqueDTPropertyIterator OPropIter;
 	DTPropertyIterator		iter = &OPropIter;
 	DeviceTreeNodeProperty	*prop = NULL;
-  
+
 	UINT8					*infoPtr = 0;
 	UINT8					*extraPtr = 0;
 	UINT8					*drvPtr = 0;
 	UINTN					offset = 0;
-  
+
 	LIST_ENTRY				*Link;
 	KEXT_ENTRY				*KextEntry;
 	UINTN					KextBase = 0;
 	_DeviceTreeBuffer		*mm;
 	_BooterKextFileInfo		*drvinfo;
-	
+
 	UINT32					KextCount;
 	UINTN					Index;
-	
-  
+
+
 	DBG_RT(Entry, "\nInjectKexts: ");
 	KextCount = GetKextCount();
 	if (KextCount == 0) {
@@ -399,7 +399,7 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 		return EFI_NOT_FOUND;
 	}
 	DBG_RT(Entry, "%d kexts ...\n", KextCount);
-  
+
 	// kextsBase = Desc->PhysicalStart + (((UINTN) Desc->NumberOfPages) * EFI_PAGE_SIZE);
 	// kextsPages = EFI_SIZE_TO_PAGES(kext.length);
 	// Status = gBS->AllocatePages(AllocateAddress, EfiLoaderData, kextsPages, &kextsBase);
@@ -410,7 +410,7 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 	// drvinfo->infoDictPhysAddr += (UINT32)kextsBase;
 	// drvinfo->executablePhysAddr += (UINT32)kextsBase;
 	// drvinfo->bundlePathPhysAddr += (UINT32)kextsBase;
-  
+
 	DTInit(dtEntry);
 	if(DTLookupEntry(NULL,"/chosen/memory-map",&memmapEntry)==kSuccess) {
 		if(DTCreatePropertyIteratorNoAlloc(memmapEntry,iter)==kSuccess) {
@@ -423,7 +423,7 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 			}
 		}
 	}
-  
+
 	if(DTLookupEntry(NULL,"/efi/platform",&platformEntry)==kSuccess) {
 		if(DTCreatePropertyIteratorNoAlloc(platformEntry,iter)==kSuccess) {
 			while(DTIterateProperties(iter,&ptr)==kSuccess) {
@@ -437,36 +437,36 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 			}
 		}
 	}
-  
+
 	if (drvPtr == 0 || infoPtr == 0 || extraPtr == 0 || drvPtr > infoPtr || drvPtr > extraPtr || infoPtr > extraPtr) {
 		Print(L"\nInvalid device tree for kext injection\n");
     gBS->Stall(5000000);
 		return EFI_INVALID_PARAMETER;
 	}
-  
+
 	// make space for memory map entries
 	platformEntry->nProperties -= 2;
 	offset = sizeof(DeviceTreeNodeProperty) + ((DeviceTreeNodeProperty*) infoPtr)->length;
 	CopyMem(drvPtr+offset, drvPtr, infoPtr-drvPtr);
-  
+
 	// make space behind device tree
 	// platformEntry->nProperties--;
 	offset = sizeof(DeviceTreeNodeProperty)+((DeviceTreeNodeProperty*) extraPtr)->length;
 	CopyMem(extraPtr, extraPtr+offset, dtLength-(UINTN)(extraPtr-dtEntry)-offset);
 	*deviceTreeLength -= (UINT32)offset;
-  
+
 	KextBase = RoundPage(dtEntry + *deviceTreeLength);
 	if(!IsListEmpty(&gKextList)) {
 		Index = 1;
 		for (Link = gKextList.ForwardLink; Link != &gKextList; Link = Link->ForwardLink) {
 			KextEntry = CR(Link, KEXT_ENTRY, Link, KEXT_SIGNATURE);
-      
+
 			CopyMem((VOID*) KextBase, (VOID*)(UINTN) KextEntry->kext.paddr, KextEntry->kext.length);
 			drvinfo = (_BooterKextFileInfo*) KextBase;
 			drvinfo->infoDictPhysAddr += (UINT32) KextBase;
 			drvinfo->executablePhysAddr += (UINT32) KextBase;
 			drvinfo->bundlePathPhysAddr += (UINT32) KextBase;
-      
+
 			memmapEntry->nProperties++;
 			prop = ((DeviceTreeNodeProperty*) drvPtr);
 			prop->length = sizeof(_DeviceTreeBuffer);
@@ -474,7 +474,7 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 			mm->paddr = (UINT32)KextBase;
 			mm->length = KextEntry->kext.length;
 			AsciiSPrint(prop->name, 31, "Driver-%x", KextBase);
-      
+
 			drvPtr += sizeof(DeviceTreeNodeProperty) + sizeof(_DeviceTreeBuffer);
 			KextBase = RoundPage(KextBase + KextEntry->kext.length);
 			DBG_RT(Entry, " %d - %a\n", Index, (CHAR8 *)(UINTN)drvinfo->bundlePathPhysAddr);
@@ -503,7 +503,7 @@ EFI_STATUS InjectKexts(/*IN EFI_MEMORY_DESCRIPTOR *Desc*/ IN UINT32 deviceTreeP,
 			Index++;
 		}
 	}
-  
+
    if (Entry->KernelAndKextPatches->KPDebug) {
 		DBG_RT(Entry, "Done.\n");
 		gBS->Stall(5000000);
@@ -615,11 +615,11 @@ VOID EFIAPI KernelBooterExtensionsPatch(IN UINT8 *Kernel, LOADER_ENTRY *Entry)
   UINTN   NumSie = 0;
   UINTN   NumSieDebug = 0;
   UINT64  os_version = AsciiOSVersionToUint64(Entry->OSVersion);
-  
+
   DBG_RT(Entry, "\nPatching kernel for injected kexts...\n");
   if (os_version >= AsciiOSVersionToUint64("10.6.0") &&
       os_version <= AsciiOSVersionToUint64("10.7.5") &&
-      !is64BitKernel) {    
+      !is64BitKernel) {
     NumSnow_i386 = SearchAndCount(Kernel, KERNEL_MAX_SIZE, KBESnowSearchEXT_i386, sizeof(KBESnowSearchEXT_i386));
     NumLion_i386 = SearchAndCount(Kernel, KERNEL_MAX_SIZE, KBELionSearchEXT_i386, sizeof(KBELionSearchEXT_i386));
     if (NumSnow_i386 + NumLion_i386 > 1) {
@@ -715,7 +715,7 @@ VOID EFIAPI KernelBooterExtensionsPatch(IN UINT8 *Kernel, LOADER_ENTRY *Entry)
   if (Entry->KernelAndKextPatches->KPDebug) {
     DBG_RT(Entry, "Pausing 5 secs ...\n");
     gBS->Stall(5000000);
-  }  
+  }
 }
 #else
 VOID EFIAPI KernelBooterExtensionsPatch(IN UINT8 *Kernel, LOADER_ENTRY *Entry)
@@ -735,9 +735,9 @@ VOID EFIAPI KernelBooterExtensionsPatch(IN UINT8 *Kernel, LOADER_ENTRY *Entry)
   UINTN   NumSieDebug = 0;
   UINTN   NumHighSie = 0;
 
-  
+
   DBG_RT(Entry, "\nPatching kernel for injected kexts...\n");
-  
+
   if (is64BitKernel) {
     NumSnow_X64    = SearchAndCount(Kernel, KERNEL_MAX_SIZE, KBESnowSearchEXT_X64, sizeof(KBESnowSearchEXT_X64));
     NumLion_X64    = SearchAndCount(Kernel, KERNEL_MAX_SIZE, KBELionSearchEXT_X64, sizeof(KBELionSearchEXT_X64));
@@ -755,7 +755,7 @@ VOID EFIAPI KernelBooterExtensionsPatch(IN UINT8 *Kernel, LOADER_ENTRY *Entry)
     NumSnow_i386 = SearchAndCount(Kernel, KERNEL_MAX_SIZE, KBESnowSearchEXT_i386, sizeof(KBESnowSearchEXT_i386));
     NumLion_i386 = SearchAndCount(Kernel, KERNEL_MAX_SIZE, KBELionSearchEXT_i386, sizeof(KBELionSearchEXT_i386));
   }
-  
+
   if (NumSnow_i386 + NumSnow_X64 + NumLion_i386 + NumLion_X64 + NumMLMav > 1) {
     // more then one pattern found - we do not know what to do with it
     // and we'll skipp it
@@ -763,7 +763,7 @@ VOID EFIAPI KernelBooterExtensionsPatch(IN UINT8 *Kernel, LOADER_ENTRY *Entry)
 	  gBS->Stall(10000000);
 	  return;
   }
-  
+
   // X64
   if (NumHighSie == 1) {
     Num = SearchAndReplace(Kernel, KERNEL_MAX_SIZE, KBEYosECSieHighSearchEXT, sizeof(KBEYosECSieHighSearchEXT), KBEYosECSieHighReplaceEXT, 1) +

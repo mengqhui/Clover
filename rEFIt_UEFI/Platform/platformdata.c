@@ -146,50 +146,50 @@ CHAR8* AppleBoardID[] =    //Lion DR1 compatible
   "Mac-9AE82516C7C6B903",  // MacBook9,1,      Intel Core m5-6Y54 @ 1.20 GHz
   "Mac-EE2EBD4B90B839A8",  // MacBook10,1,     Intel Core i5-7Y54 @ 1.30 GHz
   "Mac-F425BEC8",          // MacBookPro1,1,   Intel Core Duo T2500 @ 2.00 GHz
-  "Mac-F42DBEC8",          // MacBookPro1,2,   Intel Core Duo T2600 @ 2.17 GHz 
-  "Mac-F42189C8",          // MacBookPro2,1,   Intel Core 2 Duo T7600 @ 2.33 GHz 
-  "Mac-F42187C8",          // MacBookPro2,2,   Intel Core 2 Duo T7400 @ 2.16 GHz 
-  "Mac-F4238BC8",          // MacBookPro3,1,   Intel Core 2 Duo T7700 @ 2.40 GHz 
-  "Mac-F42C89C8",          // MacBookPro4,1,   Intel Core 2 Duo T8300 @ 2.40 GHz 
-  "Mac-F42D86C8",          // MacBookPro5,1,   Intel Core 2 Duo P8600 @ 2.40 GHz 
-  "Mac-F2268EC8",          // MacBookPro5,2,   Intel Core 2 Duo T9600 @ 2.80 GHz 
-  "Mac-F22587C8",          // MacBookPro5,3,   Intel Core 2 Duo P8800 @ 2.66 GHz 
-  "Mac-F22587A1",          // MacBookPro5,4,   Intel Core 2 Duo P8700 @ 2.53 GHz 
-  "Mac-F2268AC8",          // MacBookPro5,5,   Intel Core 2 Duo P7550 @ 2.26 GHz 
-  "Mac-F22589C8",          // MacBookPro6,1,   Intel Core i5-540M @ 2.53 GHz 
-  "Mac-F22586C8",          // MacBookPro6,2,   Intel Core i7-620M @ 2.66 GHz 
-  "Mac-F222BEC8",          // MacBookPro7,1,   Intel Core 2 Duo P8600 @ 2.40 GHz 
-  "Mac-94245B3640C91C81",  // MacBookPro8,1,   Intel Core i5-2415M @ 2.30 GHz 
-  "Mac-94245A3940C91C80",  // MacBookPro8,2,   Intel Core i7-2675QM @ 2.20 GHz 
+  "Mac-F42DBEC8",          // MacBookPro1,2,   Intel Core Duo T2600 @ 2.17 GHz
+  "Mac-F42189C8",          // MacBookPro2,1,   Intel Core 2 Duo T7600 @ 2.33 GHz
+  "Mac-F42187C8",          // MacBookPro2,2,   Intel Core 2 Duo T7400 @ 2.16 GHz
+  "Mac-F4238BC8",          // MacBookPro3,1,   Intel Core 2 Duo T7700 @ 2.40 GHz
+  "Mac-F42C89C8",          // MacBookPro4,1,   Intel Core 2 Duo T8300 @ 2.40 GHz
+  "Mac-F42D86C8",          // MacBookPro5,1,   Intel Core 2 Duo P8600 @ 2.40 GHz
+  "Mac-F2268EC8",          // MacBookPro5,2,   Intel Core 2 Duo T9600 @ 2.80 GHz
+  "Mac-F22587C8",          // MacBookPro5,3,   Intel Core 2 Duo P8800 @ 2.66 GHz
+  "Mac-F22587A1",          // MacBookPro5,4,   Intel Core 2 Duo P8700 @ 2.53 GHz
+  "Mac-F2268AC8",          // MacBookPro5,5,   Intel Core 2 Duo P7550 @ 2.26 GHz
+  "Mac-F22589C8",          // MacBookPro6,1,   Intel Core i5-540M @ 2.53 GHz
+  "Mac-F22586C8",          // MacBookPro6,2,   Intel Core i7-620M @ 2.66 GHz
+  "Mac-F222BEC8",          // MacBookPro7,1,   Intel Core 2 Duo P8600 @ 2.40 GHz
+  "Mac-94245B3640C91C81",  // MacBookPro8,1,   Intel Core i5-2415M @ 2.30 GHz
+  "Mac-94245A3940C91C80",  // MacBookPro8,2,   Intel Core i7-2675QM @ 2.20 GHz
   "Mac-942459F5819B171B",  // MacBookPro8,3,   Intel Core i7-2860QM @ 2.49 GHz
-  "Mac-4B7AC7E43945597E",  // MacBookPro9,1,   Intel Core i7-3720QM @ 2.60 GHz 
-  "Mac-6F01561E16C75D06",  // MacBookPro9,2,   Intel Core i5-3210M @ 2.50 GHz 
-  "Mac-C3EC7CD22292981F",  // MacBookPro10,1,  Intel Core i7-3740QM @ 2.70 GHz 
-  "Mac-AFD8A9D944EA4843",  // MacBookPro10,2,  Intel Core i5-3230M @ 2.60 GHz 
-  "Mac-189A3D4F975D5FFC",  // MacBookPro11,1,  Intel Core i7-4558U @ 2.80 GHz 
-  "Mac-3CBD00234E554E41",  // MacBookPro11,2,  Intel Core i7-4750HQ @ 2.00 GHz 
-  "Mac-2BD1B31983FE1663",  // MacBookPro11,3,  Intel Core i7-4870HQ @ 2.50 GHz 
-  "Mac-06F11FD93F0323C5",  // MacBookPro11,4,  Intel Core i7-4770HQ @ 2.20 GHz 
-  "Mac-06F11F11946D27C5",  // MacBookPro11,5,  Intel Core i7-4870HQ @ 2.50 GHz 
-  "Mac-E43C1C25D4880AD6",  // MacBookPro12,1,  Intel Core i5-5257U @ 2.70 GHz 
-  "Mac-473D31EABEB93F9B",  // MacBookPro13,1,  Intel Core i5-6360U @ 2.00 GHz 
-  "Mac-66E35819EE2D0D05",  // MacBookPro13,2,  Intel Core i5-6287U @ 3.10 GHz 
+  "Mac-4B7AC7E43945597E",  // MacBookPro9,1,   Intel Core i7-3720QM @ 2.60 GHz
+  "Mac-6F01561E16C75D06",  // MacBookPro9,2,   Intel Core i5-3210M @ 2.50 GHz
+  "Mac-C3EC7CD22292981F",  // MacBookPro10,1,  Intel Core i7-3740QM @ 2.70 GHz
+  "Mac-AFD8A9D944EA4843",  // MacBookPro10,2,  Intel Core i5-3230M @ 2.60 GHz
+  "Mac-189A3D4F975D5FFC",  // MacBookPro11,1,  Intel Core i7-4558U @ 2.80 GHz
+  "Mac-3CBD00234E554E41",  // MacBookPro11,2,  Intel Core i7-4750HQ @ 2.00 GHz
+  "Mac-2BD1B31983FE1663",  // MacBookPro11,3,  Intel Core i7-4870HQ @ 2.50 GHz
+  "Mac-06F11FD93F0323C5",  // MacBookPro11,4,  Intel Core i7-4770HQ @ 2.20 GHz
+  "Mac-06F11F11946D27C5",  // MacBookPro11,5,  Intel Core i7-4870HQ @ 2.50 GHz
+  "Mac-E43C1C25D4880AD6",  // MacBookPro12,1,  Intel Core i5-5257U @ 2.70 GHz
+  "Mac-473D31EABEB93F9B",  // MacBookPro13,1,  Intel Core i5-6360U @ 2.00 GHz
+  "Mac-66E35819EE2D0D05",  // MacBookPro13,2,  Intel Core i5-6287U @ 3.10 GHz
   "Mac-A5C67F76ED83108C",  // MacBookPro13,3,  Intel Core i7-6920HQ @ 2.90 GHz
   "Mac-B4831CEBD52A0C4C",  // MacBookPro14,1,  Intel Core i5-7360U @ 2.30 GHz
   "Mac-CAD6701F7CEA0921",  // MacBookPro14,2,  Intel Core i5-7267U @ 3.09 GHz
   "Mac-551B86E5744E2388",  // MacBookPro14,3,  Intel Core i7-7700HQ @ 2.80 GHz
-  "Mac-F42C8CC8",          // MacBookAir1,1,   Intel Core 2 Duo P7500 @ 1.60 GHz 
-  "Mac-F42D88C8",          // MacBookAir2,1,   Intel Core 2 Duo L9600 @ 2.13 GHz 
+  "Mac-F42C8CC8",          // MacBookAir1,1,   Intel Core 2 Duo P7500 @ 1.60 GHz
+  "Mac-F42D88C8",          // MacBookAir2,1,   Intel Core 2 Duo L9600 @ 2.13 GHz
   "Mac-942452F5819B1C1B",  // MacBookAir3,1,   Intel Core 2 Duo U9400 @ 1.40 GHz
-  "Mac-942C5DF58193131B",  // MacBookAir3,2,   Intel Core 2 Duo L9600 @ 2.13 GHz 
-  "Mac-C08A6BB70A942AC2",  // MacBookAir4,1,   Intel Core i7-2677M @ 1.80 GHz 
-  "Mac-742912EFDBEE19B3",  // MacBookAir4,2,   Intel Core i5-2557M @ 1.70 GHz 
-  "Mac-66F35F19FE2A0D05",  // MacBookAir5,1,   Intel Core i7-3667U @ 2.00 GHz 
-  "Mac-2E6FAB96566FE58C",  // MacBookAir5,2,   Intel Core i5-3427U @ 1.80 GHz 
-  "Mac-35C1E88140C3E6CF",  // MacBookAir6,1,   Intel Core i7-4650U @ 1.70 GHz 
-  "Mac-7DF21CB3ED6977E5",  // MacBookAir6,2,   Intel Core i5-4250U @ 1.30 GHz 
-  "Mac-9F18E312C5C2BF0B",  // MacBookAir7,1,   Intel Core i5-5250U @ 1.60 GHz 
-  "Mac-937CB26E2E02BB01",  // MacBookAir7,2,   Intel Core i7-5650U @ 2.20 GHz 
+  "Mac-942C5DF58193131B",  // MacBookAir3,2,   Intel Core 2 Duo L9600 @ 2.13 GHz
+  "Mac-C08A6BB70A942AC2",  // MacBookAir4,1,   Intel Core i7-2677M @ 1.80 GHz
+  "Mac-742912EFDBEE19B3",  // MacBookAir4,2,   Intel Core i5-2557M @ 1.70 GHz
+  "Mac-66F35F19FE2A0D05",  // MacBookAir5,1,   Intel Core i7-3667U @ 2.00 GHz
+  "Mac-2E6FAB96566FE58C",  // MacBookAir5,2,   Intel Core i5-3427U @ 1.80 GHz
+  "Mac-35C1E88140C3E6CF",  // MacBookAir6,1,   Intel Core i7-4650U @ 1.70 GHz
+  "Mac-7DF21CB3ED6977E5",  // MacBookAir6,2,   Intel Core i5-4250U @ 1.30 GHz
+  "Mac-9F18E312C5C2BF0B",  // MacBookAir7,1,   Intel Core i5-5250U @ 1.60 GHz
+  "Mac-937CB26E2E02BB01",  // MacBookAir7,2,   Intel Core i7-5650U @ 2.20 GHz
   "Mac-F4208EC8",          // Macmini1,1,      Intel Core 2 Duo T7200 @ 2.00 GHz
   "Mac-F4208EAA",          // Macmini2,1,      Intel Core 2 Duo T5600 @ 1.83 GHz
   "Mac-F22C86C8",          // Macmini3,1,      Intel Core 2 Duo P7550 @ 2.26 GHz
@@ -614,7 +614,7 @@ CHAR8* AppleSystemVersion[] =
   "1.0",  // MacBookAir4,1,
   "1.0",  // MacBookAir4,2,
   "1.0",  // MacBookAir5,1,
-  "1.0",  // MacBookAir5,2, 
+  "1.0",  // MacBookAir5,2,
   "1.0",  // MacBookAir6,1,
   "1.0",  // MacBookAir6,2,
   "1.0",  // MacBookAir7,1,
@@ -829,7 +829,7 @@ CHAR8* AppleChassisAsset[] =
   "Air-Enclosure",      // MacBookAir4,1,
   "Air-Enclosure",      // MacBookAir4,2,
   "Air-Enclosure",      // MacBookAir5,1,
-  "Air-Enclosure",      // MacBookAir5,2, 
+  "Air-Enclosure",      // MacBookAir5,2,
   "Air-Enclosure",      // MacBookAir6,1,
   "Air-Enclosure",      // MacBookAir6,2,
   "Air-Enclosure",      // MacBookAir7,1,
@@ -1634,7 +1634,7 @@ SetDMISettingsForModel (MACHINE_TYPES Model, BOOLEAN Redefine)
       gSettings.ChassisType = MiscChassisTypeUnknown;  //0x02; this is a joke but think different!
       gSettings.Mobile      = FALSE;
       break;
-          
+
     case Xserve11:
     case Xserve21:
     case Xserve31:
@@ -1720,7 +1720,7 @@ SetDMISettingsForModel (MACHINE_TYPES Model, BOOLEAN Redefine)
         break;
     }
   }
-    
+
   //RBr helper
   if (SmcBranch[Model][0] != 'N') {
     AsciiStrCpyS (gSettings.RBr, 8, SmcBranch[Model]);
@@ -1730,15 +1730,15 @@ SetDMISettingsForModel (MACHINE_TYPES Model, BOOLEAN Redefine)
       case CPU_MODEL_CELERON:
         AsciiStrCpyS (gSettings.RBr, 8, "m70");
         break;
-                
+
       case CPU_MODEL_YONAH:
         AsciiStrCpyS (gSettings.RBr, 8, "k22");
         break;
-                
+
       case CPU_MODEL_MEROM: //TODO check for mobile
         AsciiStrCpyS (gSettings.RBr, 8, "m75");
         break;
-                
+
       case CPU_MODEL_PENRYN:
         if (gSettings.Mobile) {
           AsciiStrCpyS (gSettings.RBr, 8, "m82");
@@ -1746,7 +1746,7 @@ SetDMISettingsForModel (MACHINE_TYPES Model, BOOLEAN Redefine)
           AsciiStrCpyS (gSettings.RBr, 8, "k36");
         }
         break;
-                
+
       case CPU_MODEL_SANDY_BRIDGE:
         if (gSettings.Mobile) {
           AsciiStrCpyS (gSettings.RBr, 8, "k90i");
@@ -1754,23 +1754,23 @@ SetDMISettingsForModel (MACHINE_TYPES Model, BOOLEAN Redefine)
           AsciiStrCpyS (gSettings.RBr, 8, "k60");
         }
         break;
-                
+
       case CPU_MODEL_IVY_BRIDGE:
         AsciiStrCpyS (gSettings.RBr, 8, "j30");
         break;
-                
+
       case CPU_MODEL_IVY_BRIDGE_E5:
         AsciiStrCpyS (gSettings.RBr, 8, "j90");
         break;
-                
+
       case CPU_MODEL_HASWELL_ULT:
         AsciiStrCpyS (gSettings.RBr, 8, "j44");
         break;
-                
+
       case CPU_MODEL_SKYLAKE_D:
         AsciiStrCpyS (gSettings.RBr, 8, "j95j95am");
         break;
-                
+
       case CPU_MODEL_SKYLAKE_U:
         AsciiStrCpyS (gSettings.RBr, 8, "2016mb");
         break;
@@ -1782,7 +1782,7 @@ SetDMISettingsForModel (MACHINE_TYPES Model, BOOLEAN Redefine)
       case CPU_MODEL_KABYLAKE2: //Desktop
         AsciiStrCpyS (gSettings.RPlt, 8, "j133_4_5");
         break;
-                
+
       default:
         AsciiStrCpyS (gSettings.RBr, 8, "t9");
         break;
@@ -1858,7 +1858,7 @@ GetDefaultSettings ()
   gSettings.CsrActiveConfig      = 0xFFFF;
   gSettings.BooterConfig         = 0;
   gSettings.DisableCloverHotkeys = FALSE;
-  
+
   ResumeFromCoreStorage          = FALSE;
 
   if (gCPUStructure.Model >= CPU_MODEL_IVY_BRIDGE) {
