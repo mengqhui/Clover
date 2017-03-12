@@ -6086,7 +6086,7 @@ GetDevices ()
          ((Pci.Hdr.ClassCode[1] == PCI_CLASS_MEDIA_HDA) ||
          (Pci.Hdr.ClassCode[1] == PCI_CLASS_MEDIA_AUDIO)) &&
          (NHDA < 4)) {
-          MsgLog (" - HDA: %a", GetHdaControllerName (Pci.Hdr.VendorId, Pci.Hdr.DeviceId));
+          MsgLog (" - HDA: %a\n", GetHdaControllerName (Pci.Hdr.VendorId, Pci.Hdr.DeviceId));
           HDA_PROPERTIES *hda = &gAudios[NHDA];
 
           // Populate Controllers IDs
@@ -6150,7 +6150,7 @@ GetDevices ()
 */
 
           if (IsHDMIAudio(HandleArray[Index])) {
-            DBG(" - HDMI Audio: \n");
+            // DBG(" - HDMI Audio: \n");
    //if ((Pci.Hdr.VendorId == 0x1002) || (Pci.Hdr.VendorId == 0x10DE)){
             SlotDevice = &SlotDevices[4];
             SlotDevice->SegmentGroupNum = (UINT16)Segment;
