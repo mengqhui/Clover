@@ -1985,10 +1985,11 @@ SetupDataForOSX (BOOLEAN Hibernate);
 EFI_STATUS
 SetPrivateVarProto ();
 
+// Device property injection
 CHAR8 *
 GetHdaControllerName (
-  IN UINT32 VendorId,
-  IN UINT32 DeviceId
+  IN UINT16 VendorId,
+  IN UINT16 DeviceId
   );
 
 EFI_STATUS
@@ -1996,6 +1997,17 @@ InjectHdaProperties (
   IN PCI_TYPE00               *HdaControllerDev,
   IN EFI_DEVICE_PATH_PROTOCOL *DevicePath,
   IN BOOLEAN                  IsHdmiAudio
+  );
+
+CHAR8 *
+GetIntelGraphicsName (
+  IN UINT16 DeviceId
+  );
+
+EFI_STATUS
+InjectIntelGraphicsProperties (
+  IN PCI_TYPE00               *IntelGraphicsDev,
+  IN EFI_DEVICE_PATH_PROTOCOL *DevicePath
   );
 
 EFI_STATUS
@@ -2015,23 +2027,6 @@ BOOLEAN
 setup_ati_devprop (
   LOADER_ENTRY *Entry,
   pci_dt_t     *ati_dev
-  );
-
-BOOLEAN
-setup_gma_devprop (
-  pci_dt_t *gma_dev
-  );
-
-CHAR8
-*get_gma_model (
-  IN UINT16 DeviceID
-  );
-
-BOOLEAN
-setup_hda_devprop (
-  EFI_PCI_IO_PROTOCOL *PciIo,
-  pci_dt_t *hda_dev,
-  CHAR8 *OSVersion
   );
 
 CHAR8
