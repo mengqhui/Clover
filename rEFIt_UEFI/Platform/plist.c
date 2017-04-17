@@ -198,13 +198,8 @@ EFI_STATUS ParseXML(const CHAR8* buffer, TagPtr * dict, UINT32 bufSize)
   TagPtr    tag = NULL;
   CHAR8*    configBuffer = NULL;
   UINT32    bufferSize = 0;
-<<<<<<< HEAD
   UINTN     i;
-  
-=======
-  INTN      i;
 
->>>>>>> Platform: Remove unnecessary whitespace
   if (bufSize) {
     bufferSize = bufSize;
   } else {
