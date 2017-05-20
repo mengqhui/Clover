@@ -13,7 +13,6 @@ install:
  - cd $TRAVIS_BUILD_DIR/../
  - git clone https://github.com/tianocore/edk2
  - cd edk2
- - yes | cp -R $TRAVIS_BUILD_DIR/Patches_for_EDK2/* .
  - make -C BaseTools -s
  - source edksetup.sh
  - cd $TRAVIS_BUILD_DIR
@@ -21,5 +20,5 @@ install:
 
 script:
  - ./gen-version.sh "$(xcodebuild -version | head -n 1) / $(clang -v 2>&1 | head -n 1)"
- - build -t XCODE8 -a IA32 -p Clover/Clover.dsc -b RELEASE -D USE_LOW_EBDA
- - build -t XCODE8 -a X64 -p Clover/Clover.dsc -b RELEASE -D USE_LOW_EBDA
+ - build -t XCODE5 -a IA32 -p Clover/Clover.dsc -b RELEASE -D USE_LOW_EBDA
+ - build -t XCODE5 -a X64 -p Clover/Clover.dsc -b RELEASE -D USE_LOW_EBDA
