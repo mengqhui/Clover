@@ -807,13 +807,13 @@ IsOsxHibernated (IN LOADER_ENTRY *Entry)
   4:609  0:000      Boot0082 points to Volume with UUID:BA92975E-E2FB-48E6-95CC-8138B286F646
   4:609  0:000      boot-image before: PciRoot(0x0)\Pci(0x1F,0x2)\Sata(0x5,0x0,0x0)\25593c7000:A82E84C6-9DD6-49D6-960A-0F4C2FE4851C
 */
-            Status = GetVariable2 (L"boot-image", &gEfiAppleBootGuid, (VOID**)&Value, &Size);
+            Status = GetVariable2 (L"boot-image", &gAppleBootVariableGuid, (VOID**)&Value, &Size);
             if (EFI_ERROR(Status)) {
               // leave it as is
               DBG("    boot-image not found while we want StrictHibernate\n");
               ret = FALSE;
             } else {
-//              DeleteNvramVariable (L"boot-image", &gEfiAppleBootGuid);
+//              DeleteNvramVariable (L"boot-image", &gAppleBootVariableGuid);
               EFI_DEVICE_PATH_PROTOCOL    *BootImageDevPath;
               UINTN                       Size;
               CHAR16                      *Ptr = (CHAR16*)&OffsetHexStr[0];
@@ -860,7 +860,7 @@ IsOsxHibernated (IN LOADER_ENTRY *Entry)
               //Value[25] = 0xFF;
               //DBG("    boot-image corrected: %s\n", FileDevicePathToStr((EFI_DEVICE_PATH_PROTOCOL*)Value));
 
-              Status = gRT->SetVariable(L"boot-image", &gEfiAppleBootGuid,
+              Status = gRT->SetVariable(L"boot-image", &gAppleBootVariableGuid,
                                         EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS | EFI_VARIABLE_RUNTIME_ACCESS,
                                         Size , Value);
               if (EFI_ERROR(Status)) {
@@ -936,7 +936,7 @@ PrepareHibernation (IN REFIT_VOLUME *Volume)
     //  VarData[25] = 0xFF;
     //  DBG("boot-image corrected: %s\n", FileDevicePathToStr(BootImageDevPath));
 
-    Status = gRT->SetVariable(L"boot-image", &gEfiAppleBootGuid,
+    Status = gRT->SetVariable(L"boot-image", &gAppleBootVariableGuid,
                               EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS | EFI_VARIABLE_RUNTIME_ACCESS,
                               Size , BootImageDevPath);
     if (EFI_ERROR(Status)) {
@@ -952,7 +952,7 @@ PrepareHibernation (IN REFIT_VOLUME *Volume)
   }
 
   // if boot-switch-vars exists (NVRAM working), then use it
-  Status = GetVariable2 (L"boot-switch-vars", &gEfiAppleBootGuid, &Value, &Size);
+  Status = GetVariable2 (L"boot-switch-vars", &gAppleBootVariableGuid, &Value, &Size);
   if (!EFI_ERROR(Status)) {
     // leave it as is
     DBG(" boot-switch-vars present\n");
@@ -961,11 +961,11 @@ PrepareHibernation (IN REFIT_VOLUME *Volume)
 
   // if IOHibernateRTCVariables exists (NVRAM working), then copy it to boot-switch-vars
   // else (no NVRAM) set boot-switch-vars to dummy one
-  Status = GetVariable2 (L"IOHibernateRTCVariables", &gEfiAppleBootGuid, &Value, &Size);
+  Status = GetVariable2 (L"IOHibernateRTCVariables", &gAppleBootVariableGuid, &Value, &Size);
   if (!EFI_ERROR(Status)) {
     DBG(" IOHibernateRTCVariables found - will be used as boot-switch-vars\n");
     // delete IOHibernateRTCVariables
-    Status = gRT->SetVariable(L"IOHibernateRTCVariables", &gEfiAppleBootGuid,
+    Status = gRT->SetVariable(L"IOHibernateRTCVariables", &gAppleBootVariableGuid,
                               EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS | EFI_VARIABLE_RUNTIME_ACCESS,
                               0, NULL);
   } else {
@@ -981,7 +981,7 @@ PrepareHibernation (IN REFIT_VOLUME *Volume)
     RtcVars.revision     = 1;
   }
 
-  Status = gRT->SetVariable(L"boot-switch-vars", &gEfiAppleBootGuid,
+  Status = gRT->SetVariable(L"boot-switch-vars", &gAppleBootVariableGuid,
                             EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS | EFI_VARIABLE_RUNTIME_ACCESS,
                             Size, Value);
   if (EFI_ERROR(Status)) {
